@@ -7,22 +7,26 @@
 // @lc code=start
 class Solution {
 public:
-    struct cmp{
-        bool operator(pair<int,int> &a,pair<int,int> &b){
-            return a.second>=b.second;
-        }
-    };
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        priority_queue< pair<int,int>,vector<pair<int,int> >,cmp> q;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>> > q;
         map<int,int> m;
         for(int num:nums)
             m[num]++;
-        for(auto p:m)
-            q.push({p.first,p.second});
         vector<int> res;
+        for(auto p:m){
+            if(q.size()<k){
+                q.push({p.second,p.first});
+            }
+            else{
+                if(p.second>(q.top()).first){
+                    q.pop();
+                    q.push({p.second,p.first});
+                }
+            }
+        }
         for(int i=0;i<k;i++){
-            res.push_back((q.top()).first);
-            q.pop();
+            res.push_back((q.top()).second);
+            q.pop();        
         }
         return res;
     }
