@@ -13,6 +13,8 @@
         "vector": "cpp",
         "sstream": "cpp",
         "streambuf": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "deque": "cpp",
+        "initializer_list": "cpp"
     }
 }
