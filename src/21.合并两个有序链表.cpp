@@ -19,7 +19,6 @@ class Solution
 {
 public:
     //循环解法
-
     // ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
     // {
     //     ListNode *result = new ListNode(0);
