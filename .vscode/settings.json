@@ -1,5 +1,8 @@
 {
     "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
         "array": "cpp",
         "*.tcc": "cpp",
         "string": "cpp",
@@ -15,6 +18,7 @@
         "streambuf": "cpp",
         "tuple": "cpp",
         "deque": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "xlocale": "cpp"
     }
 }
