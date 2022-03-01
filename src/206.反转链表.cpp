@@ -19,24 +19,38 @@ class Solution
 {
 public:
     // 头插法
+    // ListNode *reverseList(ListNode *head)
+    // {
+    //     if (head == nullptr)
+    //         return head;
+    //     ListNode *start = new ListNode(0);
+    //     start->next = nullptr;
+    //     ListNode *p, *t;
+    //     while (head != nullptr)
+    //     {
+    //         p = head->next;
+    //         t = start->next;
+    //         start->next = head;
+    //         head->next = t;
+    //         head = p;
+    //     }
+    //     p = start->next;
+    //     delete start;
+    //     return p;
+    // }
+
+    // 递归法
     ListNode *reverseList(ListNode *head)
     {
-        if (head == nullptr)
-            return head;
-        ListNode *start = new ListNode(0);
-        start->next = nullptr;
-        ListNode *p, *t;
-        while (head != nullptr)
+        if (head == nullptr || head->next == nullptr)
         {
-            p = head->next;
-            t = start->next;
-            start->next = head;
-            head->next = t;
-            head = p;
+            return head;
         }
-        p = start->next;
-        delete start;
-        return p;
+        // 返回的是头结点
+        ListNode *head_next = reverseList(head->next);
+        head->next->next = head;
+        head->next=nullptr;
+        return head_next;
     }
 };
 // @lc code=end

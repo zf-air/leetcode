@@ -80,47 +80,70 @@ public:
         }
         return head;
     }
-    // 查找元素节点
+    // 1.查找元素节点，通过计算个数
+    // ListNode *findNthFromEnd(ListNode *head, int n)
+    // {
+    //     ListNode *slow = head, *fast = head;
+    //     int len = 0, k = 0;
+    //     while (fast != nullptr && fast->next != nullptr)
+    //     {
+    //         k++;
+    //         slow = slow->next;
+    //         fast = fast->next->next;
+    //     }
+    //     if (fast == nullptr)
+    //     {
+    //         len = k * 2;
+    //     }
+    //     else
+    //     {
+    //         len = k * 2 + 1;
+    //     }
+    //     // 查找要删除的节点
+    //     int t = len - n;
+    //     ListNode *p = head;
+    //     if(t==0){
+    //         return nullptr;
+    //     }
+    //     else if (t <= k)
+    //     {
+    //         for (int i = 0; i < t - 1; i++)
+    //         {
+    //             p = p->next;
+    //         }
+    //     }
+    //     else if (t > k)
+    //     {
+    //         p = slow;
+    //         for (int i = 0; i < t - k - 1; i++)
+    //         {
+    //             p = p->next;
+    //         }
+    //     }
+    //     return p;
+    // }
+
+    // 2.查找元素节点，先让快慢指针相差n个节点，再一起走
     ListNode *findNthFromEnd(ListNode *head, int n)
     {
         ListNode *slow = head, *fast = head;
-        int len = 0, k = 0;
-        while (fast != nullptr && fast->next != nullptr)
+        // 隔开n个元素
+        for (int i = 0; i < n; i++)
         {
-            k++;
-            slow = slow->next;
-            fast = fast->next->next;
+            fast = fast->next;
         }
         if (fast == nullptr)
         {
-            len = k * 2;
-        }
-        else
-        {
-            len = k * 2 + 1;
-        }
-        // 查找要删除的节点
-        int t = len - n;
-        ListNode *p = head;
-        if(t==0){
             return nullptr;
         }
-        else if (t <= k)
+        fast = fast->next;
+        // 一起往前走，步长为1
+        while (fast)
         {
-            for (int i = 0; i < t - 1; i++)
-            {
-                p = p->next;
-            }
+            fast = fast->next;
+            slow = slow->next;
         }
-        else if (t > k)
-        {
-            p = slow;
-            for (int i = 0; i < t - k - 1; i++)
-            {
-                p = p->next;
-            }
-        }
-        return p;
+        return slow;
     }
 };
 // @lc code=end
