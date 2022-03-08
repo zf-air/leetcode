@@ -19,6 +19,11 @@
         "tuple": "cpp",
         "deque": "cpp",
         "initializer_list": "cpp",
-        "xlocale": "cpp"
+        "xlocale": "cpp",
+        "utility": "cpp",
+        "cstdlib": "cpp",
+        "xlocinfo": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     }
 }
